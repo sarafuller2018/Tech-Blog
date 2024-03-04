@@ -3,9 +3,10 @@
 // imports packages and files
 const router = require("express").Router();
 const { Comments } = require("../../models");
+const withAuth = require("../../utils/auth")
 
 // CREATE a new comment
-router.post("/", async (req, res) => {
+router.post("/", withAuth, async (req, res) => {
     try {
         // wait for user to input and create new comment
         const newComment = await Comments.create({

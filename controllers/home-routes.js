@@ -1,12 +1,13 @@
 const router = require('express').Router();
 const { BlogPost, Comments, User } = require('../models');
+const withAuth = require("../utils/auth")
 
 // The `/` endpoint
 
 // get all blogposts
 // find all blogposts
 // includes its associated User and Comments data
-router.get('/', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
     try {
         // makes it wait until you find all the category data to avoid errors 
         const blogPostData = await BlogPost.findAll({

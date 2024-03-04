@@ -3,11 +3,12 @@
 // imports packages and files
 const router = require("express").Router();
 const { BlogPost, Comments, User } = require("../../models");
+const withAuth = require("../../utils/auth")
 
 // get one blogpost
 // find a single blogpost by its `id`
 // include its associated User and Comments data
-router.get('/:id', async (req, res) => {
+router.get('/:id', withAuth, async (req, res) => {
     try {
         const blogPostData = await BlogPost.findByPk(req.params.id, {
             include: [
@@ -36,7 +37,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // CREATE a new blogpost
-router.post("/", async (req, res) => {
+router.post("/", withAuth, async (req, res) => {
     try {
         // wait for user to input and create blog post info
         const newPostInfo = await BlogPost.create({
@@ -53,8 +54,8 @@ router.post("/", async (req, res) => {
     }
 });
 
-// UPDATE a blogpost -- fix formatting ????
-router.put("/:id", async (req, res) => {
+// UPDATE a blogpost
+router.put("/:id", withAuth, async (req, res) => {
     BlogPost.update(
         {
             title: req.body.title,
@@ -77,7 +78,7 @@ router.put("/:id", async (req, res) => {
         });
 });
 
-router.delete(":/id", async (req, res) => {
+router.delete(":/id", withAuth, async (req, res) => {
     try {
         const blogpostData = await BlogPost.destroy({
                 where: {
