@@ -1,13 +1,13 @@
 const loginForm = async (event) => {
     event.preventDefault();
 
-    const userEmail = document.querySelector("#email-for-login").value.trim();
-    const userPassword = document.querySelector("#password-for-login").value.trim();
+    const email = document.querySelector("#email-for-login").value.trim();
+    const password = document.querySelector("#password-for-login").value.trim();
 
-    if (userEmail && userPassword) {
+    if (email && password) {
         const response = await fetch("/api/users/login", {
             method: "POST",
-            body: JSON.stringify({ userEmail, userPassword }),
+            body: JSON.stringify({ email, password }),
             headers: { "Content-Type": "application/json" },
         });
 
@@ -22,14 +22,14 @@ const loginForm = async (event) => {
 const signupForm = async (event) => {
     event.preventDefault();
 
-    const userUsername = document.querySelector("#username-for-signup").value.trim();
-    const userEmail = document.querySelector("#email-for-signup").value.trim();
-    const userPassword = document.querySelector("#password-for-signup").value.trim();
+    const username = document.querySelector("#username-for-signup").value.trim();
+    const email = document.querySelector("#email-for-signup").value.trim();
+    const password = document.querySelector("#password-for-signup").value.trim();
 
-    if (userUsername && userEmail && userPassword) {
+    if (username && email && password) {
         const response = await fetch("/api/users", {
             method: "POST",
-            body: JSON.stringify({ userUsername, userEmail, userPassword }),
+            body: JSON.stringify({ username, email, password }),
             headers: { "Content-Type": "application/json" },
         });
 
@@ -41,8 +41,6 @@ const signupForm = async (event) => {
     }
 };
 
-document.querySelector(".login-form");
-document.addEventListener("submit", loginForm);
+document.querySelector(".login-form").addEventListener("submit", loginForm);
 
-document.querySelector(".signup-form");
-document.addEventListener("submit", signupForm);
+document.querySelector(".signup-form").addEventListener("submit", signupForm);

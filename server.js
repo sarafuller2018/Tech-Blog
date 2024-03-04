@@ -1,5 +1,5 @@
 // imports required packages/folders to server
-const path = require('path');
+const path = require("path");
 const express = require("express");
 const session = require("express-session");
 const exphbs = require("express-handlebars");
@@ -7,7 +7,7 @@ const routes = require("./controllers");
 
 // imports sequelize to server
 const sequelize = require("./config/connection");
-const SequelizeStore = require("connect-session-sequelize")(session.Store); // ?
+const SequelizeStore = require("connect-session-sequelize")(session.Store); 
 
 // imports express to server 
 const app = express();
@@ -32,9 +32,10 @@ const hbs = exphbs.create();
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 
+
 // middleware
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
 // setting up routes for use by server
