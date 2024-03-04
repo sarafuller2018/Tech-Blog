@@ -5,7 +5,7 @@ const sequelize = require("../config/connection");
 // allows encrypted password creation
 const bcrypt = require("bcrypt");
 
-// creates user model and ????? what to do with password
+// creates user model and checks password
 class User extends Model {
     checkPassword(loginPw) {
         return bcrypt.compareSync(loginPw, this.password);
@@ -41,7 +41,7 @@ User.init(
         },
     },
     {
-        // what does hooks do???????
+        // hooks hashes password
         hooks: {
             async beforeCreate(newUserData) {
                 newUserData.password = await bcrypt.hash(newUserData.password, 10);

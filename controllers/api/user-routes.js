@@ -1,4 +1,6 @@
+// APIs alter the database that is why it is set in a different folder
 // imports packages and files
+// only need to create a session when sign in or sign up
 const router = require("express").Router();
 const { User } = require("../../models");
 
@@ -12,10 +14,10 @@ router.post("/", async (req, res) => {
             password: req.body.password,
         });
         
-        //how does it have access to session?????????
-        //what exactly does this piece of code do??????
+        // saving info to the session
         req.session.save(() => {
             req.session.loggedIn = true;
+            req.session.user_id = dbUserInfo.id;
 
             res.status(200).json(dbUserInfo);
         });
@@ -44,8 +46,7 @@ router.post("/login", async (req, res) => {
             return;
         }
         
-        //what exactly does this do???????????
-        //what does this method do
+        // checks the user password using the method created in the model
         const validateUserPassword = await dbUserInfo.checkPassword(req.body.password);
 
         // if the password is incorrect, display error message
@@ -55,7 +56,8 @@ router.post("/login", async (req, res) => {
             return;
         }
 
-        //what is this?????? how does it have access to session????
+        // cookies save small info from the user
+        // can use it to authenticate/save settings, etc.
         req.session.save(() => {
             req.session.loggedIn = true;
             console.log("File: user-routes.js ~ line 56 ~ req.session.save ~ req.session.cookie", req.session.cookie);

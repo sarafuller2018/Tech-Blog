@@ -20,6 +20,8 @@ BlogPost.init(
         post_date: {
             type: DataTypes.DATE,
             allowNull: false,
+            defaultValue: 1,
+            // how to put date automatically ????
         },
         description: {
             type: DataTypes.STRING,
