@@ -29,4 +29,4 @@ Comments.belongsTo(BlogPost, {
 });
 
 // exports to allow access
-module.exports = { User, BlogPost };
+module.exports = { User, BlogPost, Comments };

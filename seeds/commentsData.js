@@ -1,5 +1,7 @@
-// imports blogpost model
+// imports comments model
 const { Comments } = require("../models");
+console.log("what is this", Comments);
+console.log("models", require("../models"));
 
 // creates array
 const commentsdata = [

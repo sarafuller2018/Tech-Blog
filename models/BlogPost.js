@@ -1,5 +1,5 @@
 // brings in built-in model from sequelize
-const { Model, DataTypes } = require("sequelize");
+const { Model, DataTypes, Sequelize } = require("sequelize");
 const sequelize = require("../config/connection");
 
 // creates blogpost model
@@ -20,8 +20,7 @@ BlogPost.init(
         post_date: {
             type: DataTypes.DATE,
             allowNull: false,
-            defaultValue: 1,
-            // how to put date automatically ????
+            defaultValue: sequelize.fn("NOW"),
         },
         description: {
             type: DataTypes.STRING,

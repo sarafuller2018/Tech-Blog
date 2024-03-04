@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 3001;
 
 // creates session data
 const sess = {
-    secret: process.env.DB_SECRET,
+    secret: "super secret secret",
     cookie: {},
     resave: false,
     saveUnitialized: true,
