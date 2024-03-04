@@ -46,5 +46,5 @@ app.use(routes);
 // false means do not delete database
 // true means connect to database but drops data in the database, this will make you start with nothing 
 sequelize.sync({ force: false }).then(() => {
-    app.listen(PORT, () => console.log(`Now listening on http://localhost:${PORT}!`));
+    app.listen(PORT, () => console.log(`Now listening on http://localhost:${PORT}`));
 });

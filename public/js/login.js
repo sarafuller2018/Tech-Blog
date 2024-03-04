@@ -1,8 +1,8 @@
 const loginForm = async (event) => {
     event.preventDefault();
 
-    const userEmail = document.querySelector("#email-for-login").ariaValueMax.trim();
-    const userPassword = document.querySelector("#password-for-login");
+    const userEmail = document.querySelector("#email-for-login").value.trim();
+    const userPassword = document.querySelector("#password-for-login").value.trim();
 
     if (userEmail && userPassword) {
         const response = await fetch("/api/users/login", {
@@ -22,9 +22,9 @@ const loginForm = async (event) => {
 const signupForm = async (event) => {
     event.preventDefault();
 
-    const userUsername = document.querySelector("#username-for-signup");
-    const userEmail = document.querySelector("#email-for-signup");
-    const userPassword = document.querySelector("#password-for-signup");
+    const userUsername = document.querySelector("#username-for-signup").value.trim();
+    const userEmail = document.querySelector("#email-for-signup").value.trim();
+    const userPassword = document.querySelector("#password-for-signup").value.trim();
 
     if (userUsername && userEmail && userPassword) {
         const response = await fetch("/api/users", {
