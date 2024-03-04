@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { BlogPost, Comments, User } = require('../../models');
+const { BlogPost, Comments, User } = require('../models');
 
 // The `/` endpoint
 
@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
             include: [
                 {
                     model: Comments,
-                    attributes: ["post_date", "descrption", "user_id"]
+                    attributes: ["post_date", "description", "user_id"]
                 },
                 {
                     model: User,
@@ -29,40 +29,8 @@ router.get('/', async (req, res) => {
             blogposts,
             loggedIn: req.session.loggedIn,
         });
-        // i dont think i need this: res.status(200).json(blogPostData);
     } catch (err) {
         // allows you to see error in terminal instead of just the number
-        console.log(err);
-        res.status(500).json(err);
-    }
-});
-
-// get one blogpost
-// find a single blogpost by its `id`
-// include its associated User and Comments data
-router.get('/:id', async (req, res) => {
-    try {
-        const blogPostData = await BlogPost.findByPk(req.params.id, {
-            include: [
-                {
-                    model: Comments,
-                    attributes: ["post_date", "descrption", "user_id"]
-                },
-                {
-                    model: User,
-                    attributes: ["username"]
-                },
-            ],
-        });
-
-        const blogpost = blogPostData.get({ plain: true });
-        res.render("blogpost", {
-            blogpost,
-            loggedIn: req.session.loggedIn
-        });
-        // res.status(200).json(blogPostData);
-    } catch (err) {
-        //allows you to see error in terminal instead of just the number
         console.log(err);
         res.status(500).json(err);
     }

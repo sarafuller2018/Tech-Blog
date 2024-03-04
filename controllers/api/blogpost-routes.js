@@ -2,7 +2,38 @@
 
 // imports packages and files
 const router = require("express").Router();
-const { BlogPost } = require("../../models");
+const { BlogPost, Comments, User } = require("../../models");
+
+// get one blogpost
+// find a single blogpost by its `id`
+// include its associated User and Comments data
+router.get('/:id', async (req, res) => {
+    try {
+        const blogPostData = await BlogPost.findByPk(req.params.id, {
+            include: [
+                {
+                    model: Comments,
+                    attributes: ["post_date", "description", "user_id"]
+                },
+                {
+                    model: User,
+                    attributes: ["username"]
+                },
+            ],
+        });
+
+        const blogpost = blogPostData.get({ plain: true });
+        console.log("this is blogpost", blogpost)
+        res.render("blogpost", {
+            blogpost,
+            loggedIn: req.session.loggedIn
+        });
+    } catch (err) {
+        //allows you to see error in terminal instead of just the number
+        console.log(err);
+        res.status(500).json(err);
+    }
+});
 
 // CREATE a new blogpost
 router.post("/", async (req, res) => {
