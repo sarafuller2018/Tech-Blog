@@ -1,4 +1,5 @@
 // APIs alter the database that is why it is set in a different folder
+
 // imports packages and files
 const router = require("express").Router();
 const { BlogPost } = require("../../models");
@@ -6,7 +7,7 @@ const { BlogPost } = require("../../models");
 // CREATE a new blogpost
 router.post("/", async (req, res) => {
     try {
-        // wait for user to input and create new user info
+        // wait for user to input and create blog post info
         const newPostInfo = await BlogPost.create({
             title: req.body.title,
             description: req.body.description,

@@ -16,6 +16,7 @@ Comments.init(
         post_date: {
             type: DataTypes.DATE,
             allowNull: false,
+            defaultValue: 1,
         },
         description: {
             type: DataTypes.STRING,
