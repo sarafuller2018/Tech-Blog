@@ -7,7 +7,7 @@ const withAuth = require("../utils/auth")
 // get all blogposts
 // find all blogposts
 // includes its associated User and Comments data
-router.get('/', withAuth, async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         // makes it wait until you find all the category data to avoid errors 
         const blogPostData = await BlogPost.findAll({

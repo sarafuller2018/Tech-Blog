@@ -6,7 +6,7 @@ const { Comments } = require("../../models");
 const withAuth = require("../../utils/auth")
 
 // CREATE a new comment
-router.post("/", withAuth, async (req, res) => {
+router.post("/", async (req, res) => {
     try {
         // wait for user to input and create new comment
         const newComment = await Comments.create({

@@ -8,7 +8,7 @@ const withAuth = require("../../utils/auth")
 // get all blogposts
 // find all blogposts
 // includes its associated User and Comments data
-router.get('/', withAuth, async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         // makes it wait until you find all the category data to avoid errors 
         const blogPostData = await BlogPost.findAll({
@@ -41,7 +41,7 @@ router.get('/', withAuth, async (req, res) => {
 // get one blogpost
 // find a single blogpost by its `id`
 // include its associated User and Comments data
-router.get('/:id', withAuth, async (req, res) => {
+router.get('/:id', async (req, res) => {
     try {
         const blogPostData = await BlogPost.findByPk(req.params.id, {
             include: [
@@ -70,7 +70,7 @@ router.get('/:id', withAuth, async (req, res) => {
 });
 
 // CREATE a new blogpost
-router.post("/", withAuth, async (req, res) => {
+router.post("/", async (req, res) => {
     try {
         // wait for user to input and create blog post info
         const newPostInfo = await BlogPost.create({
@@ -88,7 +88,7 @@ router.post("/", withAuth, async (req, res) => {
 });
 
 // UPDATE a blogpost
-router.put("/:id", withAuth, async (req, res) => {
+router.put("/:id", async (req, res) => {
     BlogPost.update(
         {
             title: req.body.title,
@@ -111,7 +111,7 @@ router.put("/:id", withAuth, async (req, res) => {
         });
 });
 
-router.delete(":/id", withAuth, async (req, res) => {
+router.delete(":/id", async (req, res) => {
     try {
         const blogpostData = await BlogPost.destroy({
                 where: {

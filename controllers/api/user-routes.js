@@ -40,11 +40,10 @@ router.post("/login", async (req, res) => {
                 email: req.body.email,
             },
         });
-console.log(dbUserInfo);
+
         // if there is no matching email, display an error message
         if (!dbUserInfo) {
-            res.status(400);
-            res.json({ message: "Incorrect email or password. Please try again!" });
+            res.status(400).json({ message: "Incorrect email or password. Please try again!" });
             return;
         }
         
@@ -53,8 +52,7 @@ console.log(dbUserInfo);
 
         // if the password is incorrect, display error message
         if (!validateUserPassword) {
-            res.status(400);
-            res.json({ message: "Incorrect email or password. Please try again!" });
+            res.status(400).json({ message: "Incorrect email or password. Please try again!" });
             return;
         }
 
@@ -64,8 +62,7 @@ console.log(dbUserInfo);
             req.session.loggedIn = true;
             console.log("File: user-routes.js ~ line 56 ~ req.session.save ~ req.session.cookie", req.session.cookie);
         
-            res.status(200);
-            res.json({ user: dbUserInfo, message: "Nice! You are logged in."})
+            res.status(200).json({ user: dbUserInfo, message: "Nice! You are logged in."});
         });
     } catch (err) {
         console.log(err);
