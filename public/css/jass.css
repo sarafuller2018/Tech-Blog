@@ -1704,3 +1704,7 @@
     }
   }
   
+
+  .hidden {
+    display: none;
+  }

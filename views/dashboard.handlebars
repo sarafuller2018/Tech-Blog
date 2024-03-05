@@ -1,3 +1,11 @@
+{{#if loggedIn}}
+  <section>
 {{#each blogposts as |blogpost|}}
 {{> blogpost-details}}
 {{/each}}
+</section>
+</section>
+<!-- Otherwise, provide a link to login -->
+{{else}}
+<a href="/login">You must login first to view this page</a>
+{{/if}}

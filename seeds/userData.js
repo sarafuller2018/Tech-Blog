@@ -26,7 +26,7 @@ const userdata = [
 ];
 
 // bulk creates seed data into a variable using the array
-const seedUser = () => User.bulkCreate(userdata, { individualHooks: true, returning: true }); // use hook individually
+const seedUser = () => User.bulkCreate(userdata, { individualHooks: true }); // use hook individually
 
 // exports to allow access
 module.exports = seedUser;

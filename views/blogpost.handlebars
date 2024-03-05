@@ -1,0 +1,22 @@
+<section class="card">
+    <header>{{blogpost.title}}</header>
+    <h2>{{blogpost.post_date}}</h2>
+    <h3>{{blogpost.description}}</h3>
+    <p>{{blogpost.user.username}}</p>
+    <p id="post-id" class="hidden">{{blogpost.id}}</p>
+
+    {{#each blogpost.comments as |comment|}}
+    <p>{{comment.post_date}}</p>
+    <p>{{comment.description}}</p>
+    <p>{{comment.user.username}}</p>
+    {{/each}}
+</section>
+
+<section>
+    <form class="add-comment">
+        <div>
+            <label>Add a comment</label>
+            <input type="text" id="adding-comment">
+            <button type="submit">add comment</button>
+        </div>
+</section>
