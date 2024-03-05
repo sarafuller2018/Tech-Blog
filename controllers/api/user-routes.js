@@ -19,6 +19,7 @@ router.post("/", async (req, res) => {
         req.session.save(() => {
             req.session.loggedIn = true;
             req.session.user_id = dbUserInfo.id;
+            req.session.username = dbUserInfo.username;
 
             res.status(200).json(dbUserInfo);
         });
@@ -39,7 +40,7 @@ router.post("/login", async (req, res) => {
                 email: req.body.email,
             },
         });
-
+console.log(dbUserInfo);
         // if there is no matching email, display an error message
         if (!dbUserInfo) {
             res.status(400);
