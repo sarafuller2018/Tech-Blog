@@ -3,8 +3,14 @@ const { BlogPost, Comments, User } = require('../models');
 
 router.get('/', async (req, res) => {
     try {
+
+        const user_id = req.session.user_id;
+
         // makes it wait until you find all the category data to avoid errors 
         const blogPostData = await BlogPost.findAll({
+            where: {
+                user_id: user_id
+            },
             include: [
                 {
                     model: Comments,

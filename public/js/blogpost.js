@@ -15,7 +15,7 @@ const addComment = async (event) => {
         });
 
         if (response.ok) {
-            // document.location.reload();
+            document.location.reload();
             alert("Comment added!")
         } else {
             alert("Comment failed.")

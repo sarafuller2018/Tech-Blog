@@ -20,6 +20,7 @@ router.post("/", async (req, res) => {
             req.session.loggedIn = true;
             req.session.user_id = dbUserInfo.id;
             req.session.username = dbUserInfo.username;
+            console.log(req.session);
 
             res.status(200).json(dbUserInfo);
         });
@@ -60,6 +61,9 @@ router.post("/login", async (req, res) => {
         // can use it to authenticate/save settings, etc.
         req.session.save(() => {
             req.session.loggedIn = true;
+            req.session.user_id = dbUserInfo.id;
+            req.session.username = dbUserInfo.username;
+            console.log(req.session);
             console.log("File: user-routes.js ~ line 56 ~ req.session.save ~ req.session.cookie", req.session.cookie);
         
             res.status(200).json({ user: dbUserInfo, message: "Nice! You are logged in."});
