@@ -11,9 +11,11 @@ router.post("/", async (req, res) => {
         // wait for user to input and create new comment
         const newComment = await Comments.create({
             description: req.body.description,
-            user_id: req.session.user_id
+            user_id: req.body.user_id,
+            blogpost_id: req.body.blogpost_id,
         });
         res.status(200).json(newComment);
+        console.log(newComment);
 
         // catches and displays any errors
     } catch (err) {

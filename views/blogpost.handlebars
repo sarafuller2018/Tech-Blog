@@ -5,19 +5,25 @@
     <p>{{blogpost.user.username}}</p>
     <p id="post-id" class="hidden">{{blogpost.id}}</p>
 
+
     {{#each blogpost.comments as |comment|}}
     <p>{{comment.post_date}}</p>
     <p>{{comment.description}}</p>
     <p>{{comment.user.username}}</p>
+    <p id="user-id" class="hidden">{{comment.user_id}}</p>
     {{/each}}
 </section>
 
-<section>
+<div>
+    <h2>Add a comment?</h2>
     <form class="add-comment">
         <div>
-            <label>Add a comment</label>
+            <label>Comment here:</label>
             <input type="text" id="adding-comment">
-            <button type="submit">add comment</button>
+        </div>
+
+        <div>
+            <button type="submit">submit</button>
         </div>
     </form>
-</section>
+</div>
