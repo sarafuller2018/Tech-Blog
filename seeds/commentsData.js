@@ -8,25 +8,25 @@ const commentsdata = [
     {
         post_date: "March 1, 2023",
         description: "Awesome job",
-        user_id: 1,
+        user_id: 4,
         blogpost_id: 1,
     },
     {
         post_date: "January 22, 2024",
         description: "Great job",
-        user_id: 2,
+        user_id: 3,
         blogpost_id: 2,
     },
     {
         post_date: "November 20, 2021",
         description: "Nice take",
-        user_id: 3,
+        user_id: 2,
         blogpost_id: 3,
     },
     {
         post_date: "March 8, 2020",
         description: "Thanks!",
-        user_id: 4,
+        user_id: 1,
         blogpost_id: 4,
     },
 ];
